@@ -52,6 +52,44 @@
         <h2>ウミガメ</h2>
         <img src="images/kame.jpg">
         <p>ウミガメの平均寿命は、種類にもよりますが、長い種類だと８０年も生きることができるらしいです。今までの中で一番最高寿命はアオウミガメで、２００年も生きたらしいです。</p>
+        <article>                
+            <h2>お問い合わせ</h2>
+            <p>質問やご意見については下記フォームよりお問い合わせください。</p>
+            <form name="form1" action="https://api.staticforms.xyz/submit" method="post">
+                <input type="hidden" name="accessKey" value="34c4e8fc-1625-4963-9813-57e4431a5f70">
+                <table>
+                    <tr>
+                        <th>ニックネーム（必須）</th>
+                        <td><input type="text" name="name" size="30"></td>
+                    </tr>
+                    <tr>
+                        <th>Eメール（必須）</th>
+                        <td><input type="email" name="email" size="30"></td>
+                    </tr>
+                    <tr>
+                        <th>アンケート（任意）</th>
+                        <td>
+                            <p>性別</p>
+                            <input type="radio" name="sex" value="男" checked="checked"> 男　
+                            <input type="radio" name="sex" value="女"> 女
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>問い合わせ内容（必須）</th>
+                        <td><textarea name="freeans" rows="5" cols="60"></textarea></td>
+                    </tr>
+                    <tr>    
+                        <td colspan="2" id="submit">
+                            <input type="submit" value="送信">　
+                            <input type="reset" value="取り消し">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </article>
+
+
     </main>
 </body>
 </html>
