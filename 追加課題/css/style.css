@@ -4,6 +4,7 @@ body{
 }
 .header_logo{
     text-align: center;
+    width: 100%;
 }
 .header_navlist{
     display: flex;
