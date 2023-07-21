@@ -1,0 +1,69 @@
+@charset "UTF-8";
+body{
+    margin:0;
+}
+.header_logo{
+    text-align: center;
+}
+.header_navlist{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+
+}
+.header_navlist a{
+    color: black;
+    text-decoration: none;
+}
+.header_navlist li{
+    margin: 16px 28px;
+    list-style: none;
+
+}
+.ranking {
+    counter-reset: rank;
+     text-align: center;
+    list-style: none;
+    
+  }
+   
+  .ranking li {
+    position: relative;
+    
+  }
+   
+  .ranking li:not(:last-child) {
+    margin-bottom: 0;
+  }
+   
+  .ranking li::before { 
+    counter-increment: rank;
+    content: counter(rank) " 位";
+    position: absolute;
+    padding:  5%;
+    font-size: 1.2em;
+    color: #fff; 
+    background: rgba(0,0,0,0.8); 
+
+  }
+   
+  .ranking img { 
+    width: 90%;
+    height: 10%;
+    object-fit: cover;
+   
+  }
+  
+.ranking p { 
+    position: absolute;
+    bottom: 0;
+    width: 20%; 
+    padding: 3%;
+    color: #fff;
+    background: rgba(0,0,0,0.8);
+    text-align: center; 
+    margin: 5%;
+    bottom: 0;
+  }
