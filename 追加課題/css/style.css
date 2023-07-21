@@ -1,6 +1,7 @@
 @charset "UTF-8";
 body{
     margin:0;
+    background: linear-gradient(blue, aqua);
 }
 .header_logo{
     text-align: center;
@@ -86,5 +87,5 @@ th {
 }
 td {width: 600px;}
 .simple-linear {
-  background: linear-gradient(blue, aqua);
+  
 }
