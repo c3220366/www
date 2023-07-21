@@ -1,7 +1,7 @@
 @charset "UTF-8";
 body{
     margin:0;
-    background: linear-gradient(#EEFFFF, aqua);
+    background: linear-gradient(#EEFFFF, #99FFFF);
 }
 .header_logo{
     text-align: center;
