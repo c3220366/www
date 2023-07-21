@@ -81,7 +81,10 @@ th,td {
 }
 th {
   width: 200px;
-  background-color: firebrick;
+  background-color:aquamarine;
   color: white;
 }
 td {width: 600px;}
+.simple-linear {
+  background: linear-gradient(blue, aqua);
+}
