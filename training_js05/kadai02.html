@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>配列の利用</title>
+    <style>
+        table {
+        border-collapse: collapse;
+        width: 10;
+       padding: 10;
+        }
+        table th{
+        border: solid 2px black;
+        text-align: center;
+        background-color: burlywood;
+        }
+        table td{
+            border: solid 2px black;
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <h1>利用料の計算</h1>
+            <table border="2">
+        <tr>
+            <th>No.</th><th>料金（a)</td><th>人数（b）</th><th>a×b</th>
+        </tr>
+        <tr>
+            <th>0</th><td>500</td><td>10</td><td> <button onclick="answer_0();">利用料の合計</button></td>
+        </tr>
+        
+            <th>1</th><td>980</td><td>16</td><td> <button onclick="answer_1();">利用料の合計</button></td>
+        </tr>
+        <tr>
+            <th>2</th><td>1200</td><td>8</td><td> <button onclick="answer_2();">利用料の合計</button></td>
+        </tr>
+    </table>
+  
+   <script>
+    let ryo = [5000,15680,9600];
+
+    function answer_0(){
+        alert('料金は' + ryo[0] + '円です' );
+    }
+    function answer_1(){
+    alert('料金は' + ryo[1] + '円です' );
+    }
+    function answer_2(){
+    alert('料金は' + ryo[2] + '円です' );
+    }
+   </script>  
+</body>
+</html>

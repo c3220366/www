@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>変数の利用</title>
+</head>
+<body>
+    <h1>変数の演算</h1>
+    <p>a=10、b=4の場合</p>
+    <button onclick="answer_add();">足し算</button>
+    <button onclick="answer_subtract();">引き算</button>
+    <button onclick="answer_multiply();">掛け算</button>
+    <button onclick="answer_divide();">割り算</button>
+   <script>
+    let kaito = [14,6,40,2.5];
+
+    function answer_add(){
+        alert('答えは' + kaito[0] + 'です' );
+    }
+    function answer_subtract(){
+        alert('答えは' + kaito[1] + 'です' );
+    }
+    function answer_multiply(){
+        alert('答えは' + kaito[2] + 'です' );
+    }
+    function answer_divide(){
+        alert('答えは' + kaito[3] + 'です' );
+    }
+   </script>  
+</body>
+</html>
