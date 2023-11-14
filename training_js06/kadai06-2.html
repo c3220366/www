@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>要素の取得と内容変更</title>
+    <style>
+        div1{
+            color: red;
+        }
+        div2{
+            font-weight: bold;
+        }
+       
+    </style>
+</head>
+<body>
+        <h3>座席の予約</h3>
+        <p>東京会場<div1 id="message">（予約受付中）</div></p>
+        <p><div2 id="message2"></div><button onclick="showAnser();">予約する</button></p>
+        
+    <script>
+        function showAnser(){
+            let anserBox =document.getElementById('message');
+            anserBox.innerHTML = '（予約済み）'
+            document.getElementById('message2').textContent= 'ありがとうございました。';
+        }
+    </script>
+
+</body>
+</html>
