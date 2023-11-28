@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>複数の要素の取得</title>
+</head>
+<body>
+    <h3>人口の多い国ランキング</h3>
+    <div id="kuni">
+        <ol>
+        <li>中国</li>
+        <li>インド</li>
+        <li>アメリカ</li>
+        <li>インドネシア</li>
+        </ol>
+    </div>
+    <button onclick="showkuni()">国旗で表示</button>
+    
+
+    <script>
+       
+        let list = document.querySelectorAll("#kuni li");
+        function showkuni(){
+            list[0].innerHTML='<img src="kokki/chu.jpg">';
+            list[1].innerHTML='<img src="kokki/do.jpg">';
+            list[2].innerHTML='<img src="kokki/ame.jpg">';
+            list[3].innerHTML='<img src="kokki/in.jpg">';
+           
+        }
+       
+        
+    </script>
+</body>
+</html>

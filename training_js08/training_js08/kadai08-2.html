@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>要素の追加と削除</title>
+</head>
+<body>
+    <h3>写真の一覧</h3>
+    <p>以下のボタンをクリックすると、写真が一覧で表示されます。</p>
+    <div id = "pho"></div>
+    <button id ="button" onclick="get_pho()">写真を表示</button>
+    <script>
+        let pho = document.getElementById('pho');
+        function get_pho() {
+            console.log(pho);
+            pho.innerHTML += '<img src="./photo_1.jpg" alt="">' 
+            pho.innerHTML += '<img src="./photo_2.jpg" alt="">' 
+            pho.innerHTML += '<img src="./photo_3.jpg" alt="">' 
+            pho.innerHTML += '<img src="./photo_4.jpg" alt="">' 
+            pho.innerHTML += '<img src="./photo_5.jpg" alt="">' 
+            pho.innerHTML += '<img src="./photo_6.jpg" alt="">' 
+            pho.innerHTML += '<img src="./photo_7.jpg" alt="">' 
+            pho.innerHTML += '<img src="./photo_8.jpg" alt="">' 
+            pho.innerHTML += '<img src="./photo_9.jpg" alt="">' 
+        let button = document.getElementById('button');
+            button.remove();
+        }
+    </script>
+</body>
+</html>
