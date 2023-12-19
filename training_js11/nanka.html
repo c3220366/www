@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>breakの活用</title>
+<style>
+    .gig_font{
+        font-size: 32px;
+            margin:25px
+    }
+
+
+
+</style>
+</head>
+
+<body>
+<h3>問題</h3>
+<p>次の方程式を満たす解をJavaScriptで求めます。</p>
+<p class="big_font">x<sup>3</sup>-53x<sup>2</sup>+620x-1036=0</p>
+<p>※この方程式の解は3個あり、すべて1以上の整数です。</p>
+<button onclick="show()">結果を見る</button>
+<div id="message" class="big_font"></div>
+<script>
+    function show(){
+        let anser = [];
+        let count =0;
+        let kai = 0;
+        
+       
+        for(let x=1;x<100;x++){  
+            
+            kai = x*x*x-53*x-620*x-1036;
+            if(kai==0){
+                
+                anser[count] = x;
+                count=count+1;
+            }
+            if(count==3){
+              break;
+            }
+               
+         }
+        document.getElementById('message').textContent=anser[0]+'、'+anser[1]+'、'+anser[2]+'が解です。 ';
+    }
+   
+</script>
+</body>
+
+</html>
