@@ -5,6 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>数値の入力とエラー処理</title>
+    <style>
+        #message{
+            width: 500px;
+            padding: 15px;
+            margin:25px 0px;
+            background-color: #FFCC99;
+        }
+    </style>
 </head>
 <body>
     <h1>ｎ～ｍで割り切れる数字</h1>
@@ -17,7 +25,9 @@
             let text="";
             let min = parseInt(prompt('範囲の最小値を入力してください'));
             let max = parseInt(prompt('範囲の最大値を入力してください'));
-           
+            if(min<1||10<max){
+                alert("1~10の半角の整数で範囲を指定してください");
+            }
             for(let i = 1;i<=9999;i++){
                 let flag = check(i);
                 if(flag){
