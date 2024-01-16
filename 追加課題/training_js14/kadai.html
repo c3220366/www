@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>さんすうゲーム</title>
+    <style>
+   
+        .big{
+            font-size: 32px;
+            margin:25px;
+            background-color: #FFCC99;
+        }
+        .min{
+            font-size: 32px;
+            margin:25px;
+           
+        }
+
+    </style>
+</head>
+</head>
+<body>
+    <h3>さんすうゲーム</h3>
+    <p>ときたいもんだいのボタンをおしてね！</p>
+    <button id="ko1" onclick="show(1)" class="big">たしざんもんだい</button><br>
+    <button id="ko2" onclick="show(2)" class="big">ひきざんもんだい</button><br>
+    <button id="ko3" onclick="show(3)" class="big">たしざんとひきざんもんだい</button><br>
+    <button id="ko4" onclick="show(4)" class="big">たしざんとひきざんもんだい2</button>
+    <div id="messa" class="min"></div>
+    <div id="kotae" class="min"></div>
+    
+    <script>
+        let clickTimes =0;
+        function show(x){
+            clickTimes++;
+            switch(clickTimes){
+                case 0:
+                
+                break;
+                case 1:
+                    if(x==1 ){  
+                        document.getElementById('messa').textContent= '2+3='; 
+                        let anserBox =document.getElementById('ko1');
+                        anserBox.innerHTML = 'こたえ'
+                    }else if(x==2){
+                        document.getElementById('messa').textContent= '7-4='; 
+                        let anserBox =document.getElementById('ko2');
+                        anserBox.innerHTML = 'こたえ'
+                    }else if(x==3){
+                        document.getElementById('messa').textContent= '5+6-9='; 
+                        let anserBox =document.getElementById('ko3');
+                        anserBox.innerHTML = 'こたえ'
+                    }else {
+                        document.getElementById('messa').textContent= '9-3+9='; 
+                        let anserBox =document.getElementById('ko4');
+                        anserBox.innerHTML = 'こたえ'
+                    }
+                        
+            break;
+            case 2:
+            if(x==1 ){  
+                        document.getElementById('kotae').textContent= '5'; 
+                        let anserBox =document.getElementById('ko1');
+                        anserBox.innerHTML = 'こたえをかくす'
+                    }else if(x==2){
+                        document.getElementById('kotae').textContent= '3'; 
+                        let anserBox =document.getElementById('ko2');
+                        anserBox.innerHTML = 'こたえをかくす'
+                    }else if(x==3){
+                        document.getElementById('kotae').textContent= '2';
+                        let anserBox =document.getElementById('ko3');
+                        anserBox.innerHTML = 'こたえをかくす' 
+                    }else {
+                        document.getElementById('kotae').textContent= '3'; 
+                        let anserBox =document.getElementById('ko4');
+                        anserBox.innerHTML = 'こたえをかくす'
+                    }
+             break; 
+            default:
+                clickTimes =0;
+                if(x==1 ){  
+                        document.getElementById('kotae').textContent= ' '; 
+                      
+                    }else if(x==2){
+                        document.getElementById('kotae').textContent= ' '; 
+                    }else if(x==3){
+                        document.getElementById('kotae').textContent= ' '; 
+                    }else {
+                        document.getElementById('kotae').textContent= ' '; 
+                    }
+            }
+        }
+
+    </script>
+</body>
+</html>
