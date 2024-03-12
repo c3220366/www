@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ダイレクトメールのような会話</title>
+<style>
+  #chat-box {
+    width: 300px;
+    height: 400px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  .message {
+    margin-bottom: 10px;
+  }
+</style>
+</head>
+<body>
+<div id="chat-box"></div>
+<input type="text" id="message-input" placeholder="メッセージを入力してください...">
+<button onclick="sendMessage()">送信</button>
+
+<script>
+  function sendMessage() {
+    var messageInput = document.getElementById('message-input');
+    var messageText = messageInput.value.trim();
+    
+    if (messageText === '') {
+      return;
+    }
+    
+    appendMessage('You', messageText);
+    
+    // ここでサーバーにメッセージを送信するなどの処理を追加することができます。
+    
+    messageInput.value = '';
+  }
+  
+  function appendMessage(sender, message) {
+    var chatBox = document.getElementById('chat-box');
+    var messageElement = document.createElement('div');
+    messageElement.className = 'message';
+    messageElement.textContent = sender + ': ' + message;
+    chatBox.appendChild(messageElement);
+    chatBox.scrollTop = chatBox.scrollHeight; // スクロールを一番下に移動する
+  }
+</script>
+</body>
+</html>

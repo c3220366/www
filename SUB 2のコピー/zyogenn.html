@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabric.js Text Effects</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
+    <style>
+        canvas {
+            border: 1px solid #000;
+            width: 95vw; /* キャンバスの横幅を画面サイズの95vwに設定 */
+            height: 90vh; /* キャンバスの縦幅を画面サイズの90vhに設定 */
+        }
+    </style>
+    <!-- Noto Sans JP の Web フォントを追加 -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap">
+</head>
+<body>
+    <input type="file" id="imageLoader" accept="image/*"> <!-- 画像を選択するためのファイル入力フィールド -->
+    <button id="addTextBox">テキストの追加</button> <!-- テキストボックスを追加するボタン -->
+    <button id="exportButton">投稿</button> <!-- 出力ボタン -->
+    <input type="color" id="textColorPicker" value="#000000"> <!-- テキストの色を選択するカラーピッカー -->
+    <select id="fontFamilySelector">
+        <option value="Arial">Arial</option>
+        <option value="Verdana">Verdana</option>
+        <option value="Times New Roman">Times New Roman</option>
+        <option value="Georgia">Georgia</option>
+        <option value="Courier New">Courier New</option>
+        <!-- 追加 -->
+        <option value="Noto Sans JP">Noto Sans JP</option>
+    </select>
+    <canvas id="c"></canvas>
+    <script>
+        var canvas = this.__canvas = new fabric.Canvas('c');
+
+        // キャンバスのサイズをウィンドウのサイズに合わせる
+        function resizeCanvas() {
+            canvas.setDimensions({
+                width: 0.95 * window.innerWidth, // 95vw
+                height: 0.9 * window.innerHeight, // 90vh
+            });
+
+            // 画像が読み込まれている場合、キャンバスのサイズに合わせて画像をリサイズ
+            if (canvas.backgroundImage) {
+                var img = canvas.backgroundImage;
+                var scaleFactor = canvas.width / img.width;
+                img.scale(scaleFactor);
+
+                // 画像を中央に配置
+                img.set({
+                    left: (canvas.width - img.width * scaleFactor) / 2,
+                    top: (canvas.height - img.height * scaleFactor) / 2
+                });
+
+                canvas.renderAll();
+            }
+        }
+
+        // 最初にキャンバスのサイズを設定
+        resizeCanvas();
+
+        // ウィンドウのリサイズ時にキャンバスのサイズを更新する
+        window.addEventListener('resize', resizeCanvas);
+
+        // 画像を読み込む関数
+        function loadImage(file) {
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var imgObj = new Image();
+                imgObj.src = event.target.result;
+                imgObj.onload = function() {
+                    var img = new fabric.Image(imgObj);
+                    canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+                        scaleX: 1,
+                        scaleY: 1,
+                    });
+                    resizeCanvas(); // キャンバスのサイズに合わせて画像をリサイズ
+                };
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // 画像を選択して読み込む
+        document.getElementById('imageLoader').addEventListener('change', function(e) {
+            var file = e.target.files[0];
+            loadImage(file);
+        });
+
+        // deleteキーで選択されているテキストボックスを削除
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Delete') {
+                var activeObject = canvas.getActiveObject();
+                if (activeObject && activeObject.type === 'textbox') {
+                    canvas.remove(activeObject);
+                    canvas.requestRenderAll();
+                }
+            }
+        });
+
+        // ボタンをクリックして新しいテキストボックスを追加
+        document.getElementById('addTextBox').addEventListener('click', function() {
+            var textColor = document.getElementById('textColorPicker').value; // カラーピッカーからテキストの色を取得
+            var fontFamily = document.getElementById('fontFamilySelector').value; // フォントファミリを取得
+            var newTextbox = new fabric.Textbox('ここに入力', {
+                left: 20,
+                top: 100, // テキストボックスの初期位置
+                fill: textColor, // テキストの色をカラーピッカーで選択した色に設定
+                fontFamily: fontFamily, // フォントファミリを設定
+                strokeWidth: 0,
+                stroke: "#D81B60",
+            });
+            canvas.add(newTextbox);
+
+            // テキストボックスを選択したときのイベントリスナーを追加
+            canvas.on('selection:created', function(event) {
+                if (event.target.type === 'textbox') {
+                    document.getElementById('textColorPicker').value = event.target.fill;
+                    document.getElementById('fontFamilySelector').value = event.target.fontFamily;
+                }
+            });
+        });
+        // 出力ボタンをクリックして画像を出力
+        document.getElementById('exportButton').addEventListener('click', function() {
+            // キャンバスのデータURLを取得し、画像要素にセットして表示
+            var dataURL = canvas.toDataURL({
+                format: 'png',
+                quality: 1,
+            });
+            var imageElement = document.createElement('img');
+            imageElement.src = dataURL;
+            document.body.appendChild(imageElement); // 画像を表示
+        });
+
+    </script>
+</body>
+</html>

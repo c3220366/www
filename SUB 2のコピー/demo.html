@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fabric.js Text Effects</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
+    <style>
+        canvas {
+            border: 1px solid #000;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <input type="file" id="imageLoader" accept="image/*"> <!-- 画像を選択するためのファイル入力フィールド -->
+    <button id="addTextBox">テキストの追加</button> <!-- テキストボックスを追加するボタン -->
+    <button id="exportButton">投稿</button> <!-- 出力ボタン -->
+    <canvas id="c"></canvas>
+    <script>
+        var canvas = this.__canvas = new fabric.Canvas('c');
+
+        canvas.setDimensions({
+            width: window.innerWidth,
+            height: window.innerHeight,
+        });
+
+        // ウィンドウのリサイズ時にキャンバスのサイズを更新する
+        window.addEventListener('resize', function() {
+            canvas.setDimensions({
+                width: window.innerWidth,
+                height: window.innerHeight,
+            });
+        });
+        function remove() {
+            var active = canvas.getActiveObject();
+            if (!active) return;
+            active.setSelectionStyles({
+                fontSize: undefined,
+                deltaY: undefined,
+            });
+            canvas.requestRenderAll();
+        }
+ 
+        function superScript() {
+            var active = canvas.getActiveObject();
+            if (!active) return;
+            active.setSuperscript();
+            canvas.requestRenderAll();
+        }
+ 
+        function subScript() {
+            var active = canvas.getActiveObject();
+            if (!active) return;
+            active.setSubscript();
+            canvas.requestRenderAll();
+        }
+ 
+        var canvas = this.__canvas = new fabric.Canvas('c');
+ 
+        var textbox = new fabric.Textbox('ここに入力', {
+            left: 20,
+            top: 50,
+            fill: '#000',
+            strokeWidth: 2,
+            stroke: "#000",
+        });
+ 
+        canvas.add(textbox);
+ 
+        // 画像を選択して読み込む
+        document.getElementById('imageLoader').addEventListener('change', function(e) {
+            var file = e.target.files[0];
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var imgObj = new Image();
+                imgObj.src = event.target.result;
+                imgObj.onload = function() {
+                    var img = new fabric.Image(imgObj);
+                    var scaleFactor = canvas.width / img.width; // 画像の幅に合わせてキャンバスのスケールを調整
+                    img.scale(scaleFactor);
+                    canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
+                        scaleX: canvas.width / img.width,
+                        scaleY: canvas.height / img.height,
+                    });
+                };
+            };
+            reader.readAsDataURL(file);
+        });
+ 
+        // deleteキーで選択されているテキストボックスを削除
+        window.addEventListener('keydown', function(e) {
+            if (e.key === 'Delete') {
+                var activeObject = canvas.getActiveObject();
+                if (activeObject && activeObject.type === 'textbox') {
+                    canvas.remove(activeObject);
+                    canvas.requestRenderAll();
+                }
+            }
+        });
+ 
+        // ボタンをクリックして新しいテキストボックスを追加
+        document.getElementById('addTextBox').addEventListener('click', function() {
+            var newTextbox = new fabric.Textbox('ここに入力', {
+                left: 20,
+                top: 100, // テキストボックスの初期位置
+                fill: '#880E4F',
+                strokeWidth: 2,
+                stroke: "#D81B60",
+            });
+            canvas.add(newTextbox);
+        });
+ 
+        // 出力ボタンをクリックして画像を出力
+        document.getElementById('exportButton').addEventListener('click', function() {
+            // キャンバスのデータURLを取得し、画像要素にセットして表示
+            var dataURL = canvas.toDataURL({
+                format: 'png',
+                quality: 1,
+            });
+            var imageElement = document.createElement('img');
+            imageElement.src = dataURL;
+            document.body.appendChild(imageElement); // 画像を表示
+        });
+ 
+    </script>
+</body>
+ 
+</html>

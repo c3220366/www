@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SNS</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>SNS</h1>
+      <form action="#">
+        <input
+          type="file"
+          name="image"
+          accept="image/*"
+          capture="camera"
+          placeholder="投稿内容"
+        />
+        <img id="preview-image" />
+        <button type="submit">投稿</button>
+      </form>
+      <div id="posts">
+        <div class="post-actions"></div>
+      </div>
+    </div>
+
+    <div id="canvas-container">
+      <canvas id="text-canvas"></canvas>
+    </div>
+
+    <input type="file" id="image-input" />
+
+    <div>
+      <label for="text-input">テキストを入力してください:</label>
+      <input type="text" id="text-input" />
+      <button onclick="drawText()">テキストを画像に追加</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

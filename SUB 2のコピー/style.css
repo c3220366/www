@@ -1,0 +1,58 @@
+body {
+  font-family: sans-serif;
+}
+
+#app {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+#posts {
+  margin-top: 20px;
+}
+
+.post {
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.post-content {
+  margin-bottom: 10px;
+}
+
+.post-time {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.post-actions {
+  margin-top: 10px;
+}
+
+.like-btn {
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.like-btn.active {
+  background-color: #ccc;
+}
+
+#preview-image {
+  max-width: 50vw;
+  max-height: 30vh;
+}
+
+.post-image {
+  width: 80%;
+}
+
+#canvas-container {
+  position: relative;
+}
+#output-image {
+  border: 1px solid #000;
+}
